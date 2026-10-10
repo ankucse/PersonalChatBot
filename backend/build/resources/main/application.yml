@@ -9,8 +9,8 @@ spring:
     # Direct native connection to MySQL Workbench / MySQL Server
     url: jdbc:mysql://localhost:3306/novachat_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: "@246810Alpha"
+    username: your_username
+    password: your_password
     hikari:
       pool-name: NovaChatMySQLHikariPool
       maximum-pool-size: 15

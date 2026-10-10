@@ -11,12 +11,10 @@ import org.springframework.stereotype.Component;
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 @Component
-@SuppressWarnings("java:S2143") // io.jsonwebtoken.JwtBuilder requires java.util.Date for issuedAt and expiration
 public class JwtTokenProvider {
 
     private static final Logger logger = LoggerFactory.getLogger(JwtTokenProvider.class);
@@ -32,7 +30,6 @@ public class JwtTokenProvider {
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
-    @SuppressWarnings("java:S2143") // io.jsonwebtoken.JwtBuilder requires java.util.Date for issuedAt and expiration
     public String generateToken(User user) {
         Instant now = Instant.now();
         Instant expiryDate = now.plusMillis(jwtExpirationMs);
@@ -42,12 +39,12 @@ public class JwtTokenProvider {
         claims.put("email", user.getEmail());
         claims.put("role", user.getRole().name());
         claims.put("fullName", user.getFullName());
+        claims.put(Claims.ISSUED_AT, now.getEpochSecond());
+        claims.put(Claims.EXPIRATION, expiryDate.getEpochSecond());
 
         return Jwts.builder()
                 .subject(user.getUsername())
                 .claims(claims)
-                .issuedAt(Date.from(now))
-                .expiration(Date.from(expiryDate))
                 .signWith(getSigningKey())
                 .compact();
     }
@@ -64,9 +61,9 @@ public class JwtTokenProvider {
     public boolean validateToken(String token) {
         try {
             Jwts.parser()
-                .verifyWith(getSigningKey())
-                .build()
-                .parseSignedClaims(token);
+                    .verifyWith(getSigningKey())
+                    .build()
+                    .parseSignedClaims(token);
             return true;
         } catch (JwtException | IllegalArgumentException ex) {
             logger.error("Invalid JWT token: {}", ex.getMessage());
