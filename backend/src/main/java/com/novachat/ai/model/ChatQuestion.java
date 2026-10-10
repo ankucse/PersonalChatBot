@@ -3,6 +3,7 @@ package com.novachat.ai.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 @Entity
 @Table(name = "CHAT_QUESTIONS", indexes = {
@@ -50,7 +51,7 @@ public class ChatQuestion {
         this.questionNumber = questionNumber;
         this.questionText = questionText;
         this.responseText = responseText;
-        this.askedAt = LocalDateTime.now();
+        this.askedAt = LocalDateTime.now(ZoneId.systemDefault());
         this.responseTimeMs = responseTimeMs;
         this.modelUsed = modelUsed;
         this.tokensEstimated = tokensEstimated;

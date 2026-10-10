@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { api } from '../services/api';
-import { Shield, Sparkles, User, Lock, Mail, ArrowRight, CheckCircle2, AlertCircle, Sun, Moon } from 'lucide-react';
+import { Sparkles, User, Lock, Mail, ArrowRight, CheckCircle2, AlertCircle, Sun, Moon } from 'lucide-react';
 
 export default function AuthView({ onAuthSuccess, theme, toggleTheme }) {
   const [isRegister, setIsRegister] = useState(false);
@@ -132,10 +132,11 @@ export default function AuthView({ onAuthSuccess, theme, toggleTheme }) {
               
               {isRegister && (
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Full Name</label>
+                  <label htmlFor="fullName" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Full Name</label>
                   <div className="relative">
                     <User className="w-4 h-4 text-slate-400 dark:text-slate-500 absolute left-3.5 top-3" />
                     <input
+                      id="fullName"
                       type="text"
                       required
                       value={fullName}
@@ -148,12 +149,13 @@ export default function AuthView({ onAuthSuccess, theme, toggleTheme }) {
               )}
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                <label htmlFor="username" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                   {isRegister ? 'Username' : 'Username or Email'}
                 </label>
                 <div className="relative">
                   <User className="w-4 h-4 text-slate-400 dark:text-slate-500 absolute left-3.5 top-3" />
                   <input
+                    id="username"
                     type="text"
                     required
                     value={username}
@@ -166,10 +168,11 @@ export default function AuthView({ onAuthSuccess, theme, toggleTheme }) {
 
               {isRegister && (
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Email Address</label>
+                  <label htmlFor="email" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Email Address</label>
                   <div className="relative">
                     <Mail className="w-4 h-4 text-slate-400 dark:text-slate-500 absolute left-3.5 top-3" />
                     <input
+                      id="email"
                       type="email"
                       required
                       value={email}
@@ -182,10 +185,11 @@ export default function AuthView({ onAuthSuccess, theme, toggleTheme }) {
               )}
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Password</label>
+                <label htmlFor="password" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Password</label>
                 <div className="relative">
                   <Lock className="w-4 h-4 text-slate-400 dark:text-slate-500 absolute left-3.5 top-3" />
                   <input
+                    id="password"
                     type="password"
                     required
                     value={password}

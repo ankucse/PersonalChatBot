@@ -16,9 +16,7 @@ import {
   Download,
   Bot,
   ChevronRight,
-  Server,
-  Layers,
-  Cpu
+  Server
 } from 'lucide-react';
 
 export default function AdminDashboardView() {
@@ -27,7 +25,6 @@ export default function AdminDashboardView() {
   const [sessions, setSessions] = useState([]);
   const [users, setUsers] = useState([]);
   const [config, setConfig] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -54,7 +51,6 @@ export default function AdminDashboardView() {
       setUsers(usersData || []);
       setConfig(configData);
     } finally {
-      setLoading(false);
       setRefreshing(false);
     }
   };
@@ -92,6 +88,68 @@ export default function AdminDashboardView() {
     document.body.appendChild(downloadAnchor);
     downloadAnchor.click();
     downloadAnchor.remove();
+  };
+
+  const renderAuditQuestions = () => {
+    if (loadingDetail) {
+      return (
+        <div className="py-20 text-center text-slate-500 text-sm">
+          <div className="w-6 h-6 border-2 border-brand-500 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
+          Loading question audit trail from MySQL Workbench DB...
+        </div>
+      );
+    }
+
+    if (!sessionDetail?.questions || sessionDetail.questions.length === 0) {
+      return (
+        <div className="py-12 text-center text-slate-500 text-sm">
+          No questions were asked in this session.
+        </div>
+      );
+    }
+
+    return sessionDetail.questions.map((q) => (
+      <div key={q.id} className="p-4 sm:p-5 rounded-2xl bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 space-y-4">
+        {/* Question Header */}
+        <div className="flex items-center justify-between text-xs pb-2 border-b border-slate-200 dark:border-slate-800/80">
+          <div className="flex items-center gap-2">
+            <span className="px-2 py-0.5 rounded-md bg-brand-500/10 text-brand-600 dark:text-brand-300 font-bold text-[11px]">
+              Question #{q.questionNumber}
+            </span>
+            <span className="text-slate-500 dark:text-slate-400">
+              {new Date(q.askedAt).toLocaleTimeString()}
+            </span>
+          </div>
+          <div className="flex items-center gap-3 text-[11px] font-mono text-slate-500 dark:text-slate-400">
+            <span className="text-yellow-600 dark:text-yellow-400">⚡ {q.responseTimeMs} ms</span>
+            <span>•</span>
+            <span className="text-cyan-600 dark:text-cyan-400">~{q.tokensEstimated} tokens</span>
+            <span>•</span>
+            <span className="text-slate-500">{q.modelUsed}</span>
+          </div>
+        </div>
+
+        {/* Question Text Prompt */}
+        <div>
+          <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
+            Customer Prompt Asked:
+          </div>
+          <p className="text-sm font-medium text-slate-900 dark:text-white bg-white dark:bg-slate-950/60 p-3 rounded-xl border border-slate-200 dark:border-slate-800/60 shadow-sm">
+            {q.questionText}
+          </p>
+        </div>
+
+        {/* AI Answer */}
+        <div>
+          <div className="text-[11px] font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+            <Bot className="w-3.5 h-3.5" /> AI Answer Stored:
+          </div>
+          <div className="bg-white dark:bg-[#0b0f19] p-3.5 sm:p-4 rounded-xl border border-slate-200 dark:border-slate-800/80 shadow-sm">
+            <MarkdownRenderer content={q.responseText} />
+          </div>
+        </div>
+      </div>
+    ));
   };
 
   return (
@@ -290,7 +348,8 @@ export default function AdminDashboardView() {
                       <td className="py-3.5 px-4">
                         {s.status === 'ACTIVE' ? (
                           <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-[10px] font-semibold">
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                            {' '}
                             ACTIVE
                           </span>
                         ) : (
@@ -447,10 +506,12 @@ export default function AdminDashboardView() {
             </div>
 
             <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 text-[11px] text-slate-600 dark:text-slate-400">
-              💡 <strong>MySQL Workbench Querying:</strong> View questions live in MySQL Workbench with:
-              <code className="block mt-1 p-2 rounded bg-slate-100 dark:bg-slate-950 font-mono text-brand-600 dark:text-brand-300 border border-slate-200 dark:border-slate-800">
+              <p>
+                💡 <strong>MySQL Workbench Querying:</strong> View questions live in MySQL Workbench with:
+              </p>
+              <pre className="block mt-1 p-2 rounded bg-slate-100 dark:bg-slate-950 font-mono text-brand-600 dark:text-brand-300 border border-slate-200 dark:border-slate-800">
                 SELECT * FROM novachat_db.chat_questions ORDER BY asked_at DESC;
-              </code>
+              </pre>
             </div>
           </div>
 
@@ -499,61 +560,7 @@ export default function AdminDashboardView() {
 
             {/* Modal Body: List of All Questions in Session */}
             <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6 custom-scrollbar">
-              {loadingDetail ? (
-                <div className="py-20 text-center text-slate-500 text-sm">
-                  <div className="w-6 h-6 border-2 border-brand-500 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
-                  Loading question audit trail from MySQL Workbench DB...
-                </div>
-              ) : sessionDetail?.questions?.length === 0 ? (
-                <div className="py-12 text-center text-slate-500 text-sm">
-                  No questions were asked in this session.
-                </div>
-              ) : (
-                sessionDetail?.questions?.map((q) => (
-                  <div key={q.id} className="p-4 sm:p-5 rounded-2xl bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 space-y-4">
-                    
-                    {/* Question Header */}
-                    <div className="flex items-center justify-between text-xs pb-2 border-b border-slate-200 dark:border-slate-800/80">
-                      <div className="flex items-center gap-2">
-                        <span className="px-2 py-0.5 rounded-md bg-brand-500/10 text-brand-600 dark:text-brand-300 font-bold text-[11px]">
-                          Question #{q.questionNumber}
-                        </span>
-                        <span className="text-slate-500 dark:text-slate-400">
-                          {new Date(q.askedAt).toLocaleTimeString()}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-3 text-[11px] font-mono text-slate-500 dark:text-slate-400">
-                        <span className="text-yellow-600 dark:text-yellow-400">⚡ {q.responseTimeMs} ms</span>
-                        <span>•</span>
-                        <span className="text-cyan-600 dark:text-cyan-400">~{q.tokensEstimated} tokens</span>
-                        <span>•</span>
-                        <span className="text-slate-500">{q.modelUsed}</span>
-                      </div>
-                    </div>
-
-                    {/* Question Text Prompt */}
-                    <div>
-                      <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
-                        Customer Prompt Asked:
-                      </div>
-                      <p className="text-sm font-medium text-slate-900 dark:text-white bg-white dark:bg-slate-950/60 p-3 rounded-xl border border-slate-200 dark:border-slate-800/60 shadow-sm">
-                        {q.questionText}
-                      </p>
-                    </div>
-
-                    {/* AI Answer */}
-                    <div>
-                      <div className="text-[11px] font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                        <Bot className="w-3.5 h-3.5" /> AI Answer Stored:
-                      </div>
-                      <div className="bg-white dark:bg-[#0b0f19] p-3.5 sm:p-4 rounded-xl border border-slate-200 dark:border-slate-800/80 shadow-sm">
-                        <MarkdownRenderer content={q.responseText} />
-                      </div>
-                    </div>
-
-                  </div>
-                ))
-              )}
+              {renderAuditQuestions()}
             </div>
 
             {/* Modal Footer */}

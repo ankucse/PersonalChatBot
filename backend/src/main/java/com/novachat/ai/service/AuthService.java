@@ -10,15 +10,16 @@ import com.novachat.ai.security.JwtTokenProvider;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Optional;
 
 @Service
@@ -30,15 +31,21 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider tokenProvider;
     private final AuthenticationManager authenticationManager;
+    private final String adminPassword;
+    private final String demoPassword;
 
     public AuthService(UserRepository userRepository,
                        PasswordEncoder passwordEncoder,
                        JwtTokenProvider tokenProvider,
-                       AuthenticationManager authenticationManager) {
+                       AuthenticationManager authenticationManager,
+                       @Value("${app.seed.admin-password}") String adminPassword,
+                       @Value("${app.seed.demo-password}") String demoPassword) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.tokenProvider = tokenProvider;
         this.authenticationManager = authenticationManager;
+        this.adminPassword = adminPassword;
+        this.demoPassword = demoPassword;
     }
 
     @PostConstruct
@@ -48,37 +55,37 @@ public class AuthService {
         Optional<User> existingAdmin = userRepository.findByUsernameIgnoreCase("admin");
         if (existingAdmin.isPresent()) {
             User admin = existingAdmin.get();
-            admin.setPassword(passwordEncoder.encode("Admin@NovaChat2026!"));
+            admin.setPassword(passwordEncoder.encode(adminPassword));
             admin.setRole(Role.ROLE_ADMIN);
             userRepository.save(admin);
-            logger.info("⚡ Verified and synchronized Super Admin: admin / Admin@NovaChat2026!");
+            logger.info("⚡ Verified and synchronized Super Admin: admin");
         } else {
             User admin = new User(
                     "admin",
                     "admin@novachat.ai",
-                    passwordEncoder.encode("Admin@NovaChat2026!"),
+                    passwordEncoder.encode(adminPassword),
                     "Chief AI Officer (Super Admin)",
                     Role.ROLE_ADMIN
             );
             userRepository.save(admin);
-            logger.info("⚡ Seeded single Super Admin: admin / Admin@NovaChat2026!");
+            logger.info("⚡ Seeded single Super Admin: admin");
         }
 
         Optional<User> existingDemo = userRepository.findByUsernameIgnoreCase("sarah");
         if (existingDemo.isPresent()) {
             User demo = existingDemo.get();
-            demo.setPassword(passwordEncoder.encode("User@NovaChat2026!"));
+            demo.setPassword(passwordEncoder.encode(demoPassword));
             userRepository.save(demo);
         } else {
             User demoUser = new User(
                     "sarah",
                     "sarah@unicorn.io",
-                    passwordEncoder.encode("User@NovaChat2026!"),
+                    passwordEncoder.encode(demoPassword),
                     "Sarah Connor",
                     Role.ROLE_USER
             );
             userRepository.save(demoUser);
-            logger.info("⚡ Seeded standard demo user: sarah / User@NovaChat2026!");
+            logger.info("⚡ Seeded standard demo user: sarah");
         }
     }
 
@@ -118,7 +125,7 @@ public class AuthService {
         String rawPassword = request.password() != null ? request.password().trim() : "";
 
         try {
-            Authentication authentication = authenticationManager.authenticate(
+            authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(identifier, rawPassword)
             );
 
@@ -126,7 +133,7 @@ public class AuthService {
                     .or(() -> userRepository.findByEmailIgnoreCase(identifier))
                     .orElseThrow(() -> new BadCredentialsException("Invalid username or password"));
 
-            user.setLastLoginAt(LocalDateTime.now());
+            user.setLastLoginAt(LocalDateTime.now(ZoneId.systemDefault()));
             userRepository.save(user);
 
             String token = tokenProvider.generateToken(user);

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 @Service
 public class ChatService {
@@ -101,7 +102,7 @@ public class ChatService {
         }
 
         session.setStatus("CLOSED");
-        session.setEndedAt(LocalDateTime.now());
+        session.setEndedAt(LocalDateTime.now(ZoneId.systemDefault()));
         sessionRepository.save(session);
     }
 }
