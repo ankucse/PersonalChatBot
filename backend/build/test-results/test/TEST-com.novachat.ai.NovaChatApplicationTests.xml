@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.novachat.ai.NovaChatApplicationTests" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-10-10T06:05:30.854Z" hostname="DESKTOP-MQQMGVC" time="24.798">
+  <properties/>
+  <testcase name="Standard user cannot access Admin endpoints (403 Forbidden)" classname="com.novachat.ai.NovaChatApplicationTests" time="1.454"/>
+  <testcase name="Context loads and single super admin is seeded on startup" classname="com.novachat.ai.NovaChatApplicationTests" time="0.126"/>
+  <testcase name="Sole Super Admin can audit all user sessions and full question logs" classname="com.novachat.ai.NovaChatApplicationTests" time="0.657"/>
+  <testcase name="Standard user can login, create session, ask question, and backend persists it" classname="com.novachat.ai.NovaChatApplicationTests" time="5.004"/>
+  <system-out><![CDATA[11:35:31.466 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.novachat.ai.NovaChatApplicationTests]: NovaChatApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:35:31.965 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.novachat.ai.NovaChatApplication for test class com.novachat.ai.NovaChatApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.5)
+
+2026-10-10T11:35:33.919+05:30  INFO 2748 --- [novachat-backend] [    Test worker] c.novachat.ai.NovaChatApplicationTests   : Starting NovaChatApplicationTests using Java 23.0.2 with PID 2748 (started by ankit in C:\Users\ankit\.gemini\antigravity\scratch\novachat-ai\backend)
+2026-10-10T11:35:33.925+05:30  INFO 2748 --- [novachat-backend] [    Test worker] c.novachat.ai.NovaChatApplicationTests   : No active profile set, falling back to 1 default profile: "default"
+2026-10-10T11:35:37.740+05:30  INFO 2748 --- [novachat-backend] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-10T11:35:37.880+05:30  INFO 2748 --- [novachat-backend] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 122 ms. Found 3 JPA repository interfaces.
+2026-10-10T11:35:39.259+05:30  INFO 2748 --- [novachat-backend] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-10-10T11:35:39.520+05:30  INFO 2748 --- [novachat-backend] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-10-10T11:35:39.656+05:30  INFO 2748 --- [novachat-backend] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-10-10T11:35:40.489+05:30  INFO 2748 --- [novachat-backend] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-10T11:35:40.552+05:30  INFO 2748 --- [novachat-backend] [    Test worker] com.zaxxer.hikari.HikariDataSource       : NovaChatMySQLHikariPool - Starting...
+2026-10-10T11:35:40.828+05:30  INFO 2748 --- [novachat-backend] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : NovaChatMySQLHikariPool - Added connection com.mysql.cj.jdbc.ConnectionImpl@506b083
+2026-10-10T11:35:40.831+05:30  INFO 2748 --- [novachat-backend] [    Test worker] com.zaxxer.hikari.HikariDataSource       : NovaChatMySQLHikariPool - Start completed.
+2026-10-10T11:35:40.919+05:30  WARN 2748 --- [novachat-backend] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-10-10T11:35:42.829+05:30  INFO 2748 --- [novachat-backend] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-10T11:35:43.014+05:30  INFO 2748 --- [novachat-backend] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-10T11:35:44.054+05:30  INFO 2748 --- [novachat-backend] [    Test worker] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-10T11:35:46.453+05:30  INFO 2748 --- [novachat-backend] [    Test worker] com.novachat.ai.service.AuthService      : ⚡ Verified and synchronized Super Admin: admin / Admin@NovaChat2026!
+2026-10-10T11:35:48.262+05:30  INFO 2748 --- [novachat-backend] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-10T11:35:48.263+05:30  INFO 2748 --- [novachat-backend] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-10T11:35:48.267+05:30  INFO 2748 --- [novachat-backend] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 4 ms
+2026-10-10T11:35:48.362+05:30  INFO 2748 --- [novachat-backend] [    Test worker] c.novachat.ai.NovaChatApplicationTests   : Started NovaChatApplicationTests in 15.731 seconds (process running for 20.989)
+]]></system-out>
+  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (C:\Users\ankit\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.14.19\154da3a65b4f4a909d3e5bdec55d1b2b4cbb6ce1\byte-buddy-agent-1.14.19.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>

@@ -1,0 +1,48 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: novachat-backend
+
+  datasource:
+    # Direct native connection to MySQL Workbench / MySQL Server
+    url: jdbc:mysql://localhost:3306/novachat_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: your_username
+    password: your_password
+    hikari:
+      pool-name: NovaChatMySQLHikariPool
+      maximum-pool-size: 15
+      minimum-idle: 3
+      idle-timeout: 300000
+      connection-timeout: 30000
+      max-lifetime: 1800000
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+
+# JWT Authentication Security Settings
+jwt:
+  secret: NovaChatEnterprise2026SecureJWTKeyWithMinimum384BitsOfHighEntropySecurity123456789!
+  expiration-ms: 86400000 # 24 Hours
+
+# AI Engine Configuration (Server-Side)
+gemini:
+  api-key: ${GEMINI_API_KEY:${GOOGLE_API_KEY:AIzaSyBoNo4cIR6tysh60mfcZNjZvAmH6gZb-b0}}
+  model: ${GEMINI_MODEL:gemini-3.5-flash}
+  temperature: 0.7
+  max-output-tokens: 2048
+  system-prompt: "You are NovaChat AI, an enterprise-grade AI chatbot built for unicorn SaaS platforms. Provide clear, accurate, structured, and insightful answers with markdown formatting where appropriate."
+
+logging:
+  level:
+    com.novachat.ai: INFO
+    org.springframework.security: WARN

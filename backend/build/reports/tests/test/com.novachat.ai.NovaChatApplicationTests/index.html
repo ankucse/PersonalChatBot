@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - com.novachat.ai.NovaChatApplicationTests</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<div class="breadcrumbs">
+<a class="breadcrumb" href="../index.html">all</a> &gt; 
+<span class="breadcrumb">com.novachat.ai.NovaChatApplicationTests</span>
+</div>
+<div class="tab-container">
+<ul class="tabLinks">
+<li>
+<a class="successGroup" href="#">Gradle Test Run :test</a>
+</li>
+</ul>
+<div class="tab">
+<h2>Gradle Test Run :test</h2>
+<h1>NovaChatApplicationTests</h1>
+<div class="tab-container">
+<ul class="tabLinks">
+<li>
+<a class="" href="#">summary</a>
+</li>
+<li>
+<a class="" href="#">standard output</a>
+</li>
+</ul>
+<div class="tab">
+<h2>summary</h2>
+<div>
+<div class="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox">
+<div class="counter">4</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox">
+<div class="counter">0</div>
+<p>skipped</p>
+</div>
+</td>
+<td>
+<div class="infoBox duration">
+<div class="counter">24.802s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<table class="test-results sortable">
+<thead>
+<tr>
+<th>Child</th>
+<th>Name</th>
+<th data-sort-default="desc">Tests</th>
+<th data-sort-default="desc">Failures</th>
+<th data-sort-default="desc">Skipped</th>
+<th data-sort-default="desc">Duration</th>
+<th>Success rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="success">Context loads and single super admin is seeded on startup</td>
+<td class="path">contextLoads()</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td data-sort-value="126">0.126s</td>
+<td class="success" data-sort-value="100">100%</td>
+</tr>
+<tr>
+<td class="success">Sole Super Admin can audit all user sessions and full question logs</td>
+<td class="path">testAdminCanInspectSessionsAndQuestions()</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td data-sort-value="657">0.657s</td>
+<td class="success" data-sort-value="100">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="testStandardUserForbiddenFromAdminEndpoints().html">Standard user cannot access Admin endpoints (403 Forbidden)</a>
+</td>
+<td class="path">testStandardUserForbiddenFromAdminEndpoints()</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td data-sort-value="1454">1.454s</td>
+<td class="success" data-sort-value="100">100%</td>
+</tr>
+<tr>
+<td class="success">Standard user can login, create session, ask question, and backend persists it</td>
+<td class="path">testUserChatFlow()</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td data-sort-value="5004">5.004s</td>
+<td class="success" data-sort-value="100">100%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="tab">
+<h2>standard output</h2>
+<span class="code">
+<pre id="root-0-test-stdout-com.novachat.ai.NovaChatApplicationTests">11:35:31.466 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.novachat.ai.NovaChatApplicationTests]: NovaChatApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:35:31.965 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.novachat.ai.NovaChatApplication for test class com.novachat.ai.NovaChatApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.5)
+
+2026-10-10T11:35:33.919+05:30  INFO 2748 --- [novachat-backend] [    Test worker] c.novachat.ai.NovaChatApplicationTests   : Starting NovaChatApplicationTests using Java 23.0.2 with PID 2748 (started by ankit in C:\Users\ankit\.gemini\antigravity\scratch\novachat-ai\backend)
+2026-10-10T11:35:33.925+05:30  INFO 2748 --- [novachat-backend] [    Test worker] c.novachat.ai.NovaChatApplicationTests   : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2026-10-10T11:35:37.740+05:30  INFO 2748 --- [novachat-backend] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-10T11:35:37.880+05:30  INFO 2748 --- [novachat-backend] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 122 ms. Found 3 JPA repository interfaces.
+2026-10-10T11:35:39.259+05:30  INFO 2748 --- [novachat-backend] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-10-10T11:35:39.520+05:30  INFO 2748 --- [novachat-backend] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-10-10T11:35:39.656+05:30  INFO 2748 --- [novachat-backend] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-10-10T11:35:40.489+05:30  INFO 2748 --- [novachat-backend] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-10T11:35:40.552+05:30  INFO 2748 --- [novachat-backend] [    Test worker] com.zaxxer.hikari.HikariDataSource       : NovaChatMySQLHikariPool - Starting...
+2026-10-10T11:35:40.828+05:30  INFO 2748 --- [novachat-backend] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : NovaChatMySQLHikariPool - Added connection com.mysql.cj.jdbc.ConnectionImpl@506b083
+2026-10-10T11:35:40.831+05:30  INFO 2748 --- [novachat-backend] [    Test worker] com.zaxxer.hikari.HikariDataSource       : NovaChatMySQLHikariPool - Start completed.
+2026-10-10T11:35:40.919+05:30  WARN 2748 --- [novachat-backend] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-10-10T11:35:42.829+05:30  INFO 2748 --- [novachat-backend] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-10T11:35:43.014+05:30  INFO 2748 --- [novachat-backend] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-10T11:35:44.054+05:30  INFO 2748 --- [novachat-backend] [    Test worker] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-10T11:35:46.453+05:30  INFO 2748 --- [novachat-backend] [    Test worker] com.novachat.ai.service.AuthService      : ⚡ Verified and synchronized Super Admin: admin / Admin@NovaChat2026!
+2026-10-10T11:35:48.262+05:30  INFO 2748 --- [novachat-backend] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-10T11:35:48.263+05:30  INFO 2748 --- [novachat-backend] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-10T11:35:48.267+05:30  INFO 2748 --- [novachat-backend] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 4 ms
+2026-10-10T11:35:48.362+05:30  INFO 2748 --- [novachat-backend] [    Test worker] c.novachat.ai.NovaChatApplicationTests   : Started NovaChatApplicationTests in 15.731 seconds (process running for 20.989)
+</pre>
+<button class="clipboard-copy-btn" aria-label="Copy to clipboard" data-copy-element-id="root-0-test-stdout-com.novachat.ai.NovaChatApplicationTests">Copy</button>
+</span>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="https://www.gradle.org">Gradle 9.7.1</a> at 10 Oct 2026, 11:35:56 am</p>
+</div>
+</div>
+</body>
+</html>
