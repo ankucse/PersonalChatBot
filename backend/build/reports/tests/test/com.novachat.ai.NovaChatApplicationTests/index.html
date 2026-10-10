@@ -62,7 +62,7 @@
 </td>
 <td>
 <div class="infoBox duration">
-<div class="counter">12.837s</div>
+<div class="counter">12.312s</div>
 <p>duration</p>
 </div>
 </td>
@@ -98,7 +98,7 @@
 <td>1</td>
 <td>0</td>
 <td>0</td>
-<td data-sort-value="128">0.128s</td>
+<td data-sort-value="101">0.101s</td>
 <td class="success" data-sort-value="100">100%</td>
 </tr>
 <tr>
@@ -107,7 +107,7 @@
 <td>1</td>
 <td>0</td>
 <td>0</td>
-<td data-sort-value="285">0.285s</td>
+<td data-sort-value="252">0.252s</td>
 <td class="success" data-sort-value="100">100%</td>
 </tr>
 <tr>
@@ -118,7 +118,7 @@
 <td>1</td>
 <td>0</td>
 <td>0</td>
-<td data-sort-value="1830">1.830s</td>
+<td data-sort-value="1359">1.359s</td>
 <td class="success" data-sort-value="100">100%</td>
 </tr>
 <tr>
@@ -127,7 +127,7 @@
 <td>1</td>
 <td>0</td>
 <td>0</td>
-<td data-sort-value="206">0.206s</td>
+<td data-sort-value="187">0.187s</td>
 <td class="success" data-sort-value="100">100%</td>
 </tr>
 </tbody>
@@ -137,8 +137,8 @@
 <div class="tab">
 <h2>standard output</h2>
 <span class="code">
-<pre id="root-0-test-stdout-com.novachat.ai.NovaChatApplicationTests">15:40:04.838 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.novachat.ai.NovaChatApplicationTests]: NovaChatApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-15:40:05.129 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.novachat.ai.NovaChatApplication for test class com.novachat.ai.NovaChatApplicationTests
+<pre id="root-0-test-stdout-com.novachat.ai.NovaChatApplicationTests">15:54:14.644 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.novachat.ai.NovaChatApplicationTests]: NovaChatApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:54:14.861 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.novachat.ai.NovaChatApplication for test class com.novachat.ai.NovaChatApplicationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -149,27 +149,27 @@
 
  :: Spring Boot ::                (v3.3.5)
 
-2026-10-10T15:40:05.939+05:30  INFO 18400 --- [novachat-backend-test] [    Test worker] c.novachat.ai.NovaChatApplicationTests   : Starting NovaChatApplicationTests using Java 23.0.2 with PID 18400 (started by ankit in C:\Users\ankit\.gemini\antigravity\scratch\novachat-ai\backend)
-2026-10-10T15:40:05.941+05:30  INFO 18400 --- [novachat-backend-test] [    Test worker] c.novachat.ai.NovaChatApplicationTests   : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2026-10-10T15:40:07.245+05:30  INFO 18400 --- [novachat-backend-test] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-10-10T15:40:07.338+05:30  INFO 18400 --- [novachat-backend-test] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 80 ms. Found 3 JPA repository interfaces.
-2026-10-10T15:40:08.270+05:30  INFO 18400 --- [novachat-backend-test] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-10-10T15:40:08.425+05:30  INFO 18400 --- [novachat-backend-test] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2026-10-10T15:40:08.523+05:30  INFO 18400 --- [novachat-backend-test] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-10-10T15:40:09.118+05:30  INFO 18400 --- [novachat-backend-test] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-10-10T15:40:09.165+05:30  INFO 18400 --- [novachat-backend-test] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-10-10T15:40:09.423+05:30  INFO 18400 --- [novachat-backend-test] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:novachat_test user=SA
-2026-10-10T15:40:09.427+05:30  INFO 18400 --- [novachat-backend-test] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-10-10T15:40:09.466+05:30  WARN 18400 --- [novachat-backend-test] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-10-10T15:40:11.113+05:30  INFO 18400 --- [novachat-backend-test] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-10-10T15:40:11.195+05:30  INFO 18400 --- [novachat-backend-test] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-10-10T15:40:11.976+05:30  INFO 18400 --- [novachat-backend-test] [    Test worker] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-10-10T15:40:13.478+05:30  INFO 18400 --- [novachat-backend-test] [    Test worker] com.novachat.ai.service.AuthService      : ⚡ Seeded single Super Admin: admin
-2026-10-10T15:40:13.552+05:30  INFO 18400 --- [novachat-backend-test] [    Test worker] com.novachat.ai.service.AuthService      : ⚡ Seeded standard demo user: sarah
-2026-10-10T15:40:14.816+05:30  INFO 18400 --- [novachat-backend-test] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-10-10T15:40:14.817+05:30  INFO 18400 --- [novachat-backend-test] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-10-10T15:40:14.819+05:30  INFO 18400 --- [novachat-backend-test] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
-2026-10-10T15:40:14.862+05:30  INFO 18400 --- [novachat-backend-test] [    Test worker] c.novachat.ai.NovaChatApplicationTests   : Started NovaChatApplicationTests in 9.415 seconds (process running for 11.558)
+2026-10-10T15:54:15.632+05:30  INFO 14496 --- [novachat-backend-test] [    Test worker] c.novachat.ai.NovaChatApplicationTests   : Starting NovaChatApplicationTests using Java 23.0.2 with PID 14496 (started by ankit in C:\Users\ankit\.gemini\antigravity\scratch\novachat-ai\backend)
+2026-10-10T15:54:15.633+05:30  INFO 14496 --- [novachat-backend-test] [    Test worker] c.novachat.ai.NovaChatApplicationTests   : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2026-10-10T15:54:17.064+05:30  INFO 14496 --- [novachat-backend-test] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-10T15:54:17.180+05:30  INFO 14496 --- [novachat-backend-test] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 101 ms. Found 3 JPA repository interfaces.
+2026-10-10T15:54:18.178+05:30  INFO 14496 --- [novachat-backend-test] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-10-10T15:54:18.336+05:30  INFO 14496 --- [novachat-backend-test] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-10-10T15:54:18.421+05:30  INFO 14496 --- [novachat-backend-test] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-10-10T15:54:19.042+05:30  INFO 14496 --- [novachat-backend-test] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-10T15:54:19.092+05:30  INFO 14496 --- [novachat-backend-test] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-10T15:54:19.353+05:30  INFO 14496 --- [novachat-backend-test] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:novachat_test user=SA
+2026-10-10T15:54:19.356+05:30  INFO 14496 --- [novachat-backend-test] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-10T15:54:19.390+05:30  WARN 14496 --- [novachat-backend-test] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-10-10T15:54:21.040+05:30  INFO 14496 --- [novachat-backend-test] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-10T15:54:21.123+05:30  INFO 14496 --- [novachat-backend-test] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-10T15:54:21.918+05:30  INFO 14496 --- [novachat-backend-test] [    Test worker] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-10T15:54:23.452+05:30  INFO 14496 --- [novachat-backend-test] [    Test worker] com.novachat.ai.service.AuthService      : ⚡ Seeded single Super Admin: admin
+2026-10-10T15:54:23.525+05:30  INFO 14496 --- [novachat-backend-test] [    Test worker] com.novachat.ai.service.AuthService      : ⚡ Seeded standard demo user: sarah
+2026-10-10T15:54:24.711+05:30  INFO 14496 --- [novachat-backend-test] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-10T15:54:24.711+05:30  INFO 14496 --- [novachat-backend-test] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-10T15:54:24.712+05:30  INFO 14496 --- [novachat-backend-test] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-10T15:54:24.750+05:30  INFO 14496 --- [novachat-backend-test] [    Test worker] c.novachat.ai.NovaChatApplicationTests   : Started NovaChatApplicationTests in 9.589 seconds (process running for 12.229)
 </pre>
 <button class="clipboard-copy-btn" aria-label="Copy to clipboard" data-copy-element-id="root-0-test-stdout-com.novachat.ai.NovaChatApplicationTests">Copy</button>
 </span>
@@ -184,7 +184,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="https://www.gradle.org">Gradle 9.7.1</a> at 10 Oct 2026, 3:40:17 pm</p>
+<a href="https://www.gradle.org">Gradle 9.7.1</a> at 10 Oct 2026, 3:54:27 pm</p>
 </div>
 </div>
 </body>
