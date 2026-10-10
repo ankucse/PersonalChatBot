@@ -3,6 +3,7 @@ package com.novachat.ai.controller;
 import com.novachat.ai.dto.AuthResponse;
 import com.novachat.ai.dto.LoginRequest;
 import com.novachat.ai.dto.RegisterRequest;
+import com.novachat.ai.dto.UserProfileDto;
 import com.novachat.ai.model.User;
 import com.novachat.ai.security.CustomUserDetails;
 import com.novachat.ai.service.AuthService;
@@ -10,8 +11,6 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -36,17 +35,17 @@ public class AuthController {
     }
 
     @GetMapping("/me")
-    public ResponseEntity<?> getCurrentUser(@AuthenticationPrincipal CustomUserDetails userDetails) {
+    public ResponseEntity<UserProfileDto> getCurrentUser(@AuthenticationPrincipal CustomUserDetails userDetails) {
         if (userDetails == null) {
-            return ResponseEntity.status(401).body(Map.of("error", "Not authenticated"));
+            return ResponseEntity.status(401).build();
         }
         User user = userDetails.getUser();
-        return ResponseEntity.ok(Map.of(
-                "id", user.getId(),
-                "username", user.getUsername(),
-                "email", user.getEmail(),
-                "fullName", user.getFullName(),
-                "role", user.getRole().name()
+        return ResponseEntity.ok(new UserProfileDto(
+                user.getId(),
+                user.getUsername(),
+                user.getEmail(),
+                user.getFullName(),
+                user.getRole().name()
         ));
     }
 }

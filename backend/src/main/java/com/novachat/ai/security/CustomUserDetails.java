@@ -10,7 +10,9 @@ import java.util.List;
 
 public class CustomUserDetails implements UserDetails {
 
-    private final User user;
+    private static final long serialVersionUID = 1L;
+
+    private final transient User user;
 
     public CustomUserDetails(User user) {
         this.user = user;
@@ -21,7 +23,7 @@ public class CustomUserDetails implements UserDetails {
     }
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
+    public Collection<GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(user.getRole().name()));
     }
 

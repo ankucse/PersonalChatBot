@@ -13,11 +13,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class AdminService {
+
+    private static final String UNKNOWN = "Unknown";
 
     private final UserRepository userRepository;
     private final ChatSessionRepository sessionRepository;
@@ -52,9 +54,9 @@ public class AdminService {
             return new SessionSummaryDto(
                     session.getSessionUuid(),
                     user != null ? user.getId() : null,
-                    user != null ? user.getUsername() : "Unknown",
-                    user != null ? user.getEmail() : "Unknown",
-                    user != null ? user.getFullName() : "Unknown",
+                    user != null ? user.getUsername() : UNKNOWN,
+                    user != null ? user.getEmail() : UNKNOWN,
+                    user != null ? user.getFullName() : UNKNOWN,
                     session.getTitle(),
                     session.getStartedAt(),
                     session.getEndedAt(),
@@ -63,7 +65,7 @@ public class AdminService {
                     firstExcerpt,
                     lastExcerpt
             );
-        }).collect(Collectors.toList());
+        }).toList();
     }
 
     @Transactional(readOnly = true)
@@ -82,14 +84,14 @@ public class AdminService {
                         q.getResponseTimeMs(),
                         q.getModelUsed(),
                         q.getTokensEstimated()
-                )).collect(Collectors.toList());
+                )).toList();
 
         return new SessionDetailDto(
                 session.getSessionUuid(),
                 user != null ? user.getId() : null,
-                user != null ? user.getUsername() : "Unknown",
-                user != null ? user.getEmail() : "Unknown",
-                user != null ? user.getFullName() : "Unknown",
+                user != null ? user.getUsername() : UNKNOWN,
+                user != null ? user.getEmail() : UNKNOWN,
+                user != null ? user.getFullName() : UNKNOWN,
                 session.getTitle(),
                 session.getStartedAt(),
                 session.getEndedAt(),
@@ -106,7 +108,7 @@ public class AdminService {
         long activeSessions = sessionRepository.countByStatus("ACTIVE");
         long totalQuestions = questionRepository.count();
 
-        LocalDateTime startOfToday = LocalDate.now().atStartOfDay();
+        LocalDateTime startOfToday = LocalDate.now(ZoneId.systemDefault()).atStartOfDay();
         long questionsToday = questionRepository.countByAskedAtAfter(startOfToday);
 
         Double avgResponseTime = questionRepository.getAverageResponseTime();
@@ -138,7 +140,7 @@ public class AdminService {
                     user.getLastLoginAt(),
                     sessions
             );
-        }).collect(Collectors.toList());
+        }).toList();
     }
 
     @Transactional(readOnly = true)

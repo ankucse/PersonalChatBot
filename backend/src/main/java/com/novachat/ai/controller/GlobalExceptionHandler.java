@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,7 +42,7 @@ public class GlobalExceptionHandler {
         body.put("status", HttpStatus.BAD_REQUEST.value());
         body.put("error", "Validation Failed");
         body.put("validationErrors", errors);
-        body.put("timestamp", LocalDateTime.now().toString());
+        body.put("timestamp", LocalDateTime.now(ZoneId.systemDefault()).toString());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
     }
 
@@ -55,7 +56,7 @@ public class GlobalExceptionHandler {
         body.put("status", status.value());
         body.put("error", status.getReasonPhrase());
         body.put("message", message);
-        body.put("timestamp", LocalDateTime.now().toString());
+        body.put("timestamp", LocalDateTime.now(ZoneId.systemDefault()).toString());
         return ResponseEntity.status(status).body(body);
     }
 }

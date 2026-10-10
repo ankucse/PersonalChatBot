@@ -34,9 +34,15 @@ jwt:
   secret: NovaChatEnterprise2026SecureJWTKeyWithMinimum384BitsOfHighEntropySecurity123456789!
   expiration-ms: 86400000 # 24 Hours
 
+# Seed Accounts Configuration
+app:
+  seed:
+    admin-password: ${ADMIN_SEED_PASSWORD:Admin@NovaChat2026!}
+    demo-password: ${DEMO_SEED_PASSWORD:User@NovaChat2026!}
+
 # AI Engine Configuration (Server-Side)
 gemini:
-  api-key: ${GEMINI_API_KEY:${GOOGLE_API_KEY:AIzaSyBoNo4cIR6tysh60mfcZNjZvAmH6gZb-b0}}
+  api-key: ${GEMINI_API_KEY:${GOOGLE_API_KEY:}}
   model: ${GEMINI_MODEL:gemini-3.5-flash}
   temperature: 0.7
   max-output-tokens: 2048

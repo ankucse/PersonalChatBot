@@ -90,9 +90,10 @@ class NovaChatApplicationTests {
 
         String responseText = objectMapper.readTree(questionResult.getResponse().getContentAsString())
                 .path("responseText").asText();
-        assertThat(responseText).doesNotContain("GEMINI_API_KEY");
-        assertThat(responseText).doesNotContain("application.yml");
-        assertThat(responseText).contains("Hello!");
+        assertThat(responseText)
+                .doesNotContain("GEMINI_API_KEY")
+                .doesNotContain("application.yml")
+                .contains("Hello!");
 
         // 3. Verify question is stored in database
         assertThat(questionRepository.count()).isGreaterThanOrEqualTo(1);

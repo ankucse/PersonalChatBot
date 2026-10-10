@@ -1,0 +1,44 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: novachat-backend-test
+
+  datasource:
+    url: jdbc:h2:mem:novachat_test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+
+# JWT Authentication Security Settings
+jwt:
+  secret: NovaChatEnterprise2026SecureJWTKeyWithMinimum384BitsOfHighEntropySecurity123456789!
+  expiration-ms: 86400000
+
+# Seed Accounts Configuration
+app:
+  seed:
+    admin-password: Admin@NovaChat2026!
+    demo-password: User@NovaChat2026!
+
+# AI Engine Configuration
+gemini:
+  model: gemini-3.5-flash
+  temperature: 0.7
+  max-output-tokens: 2048
+  system-prompt: "You are NovaChat AI, an enterprise-grade AI chatbot."
+
+logging:
+  level:
+    com.novachat.ai: INFO
+    org.springframework.security: WARN

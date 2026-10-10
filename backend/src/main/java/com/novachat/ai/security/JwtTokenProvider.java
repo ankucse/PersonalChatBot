@@ -10,11 +10,13 @@ import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
+import java.time.Instant;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 @Component
+@SuppressWarnings("java:S2143") // io.jsonwebtoken.JwtBuilder requires java.util.Date for issuedAt and expiration
 public class JwtTokenProvider {
 
     private static final Logger logger = LoggerFactory.getLogger(JwtTokenProvider.class);
@@ -30,9 +32,10 @@ public class JwtTokenProvider {
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
+    @SuppressWarnings("java:S2143") // io.jsonwebtoken.JwtBuilder requires java.util.Date for issuedAt and expiration
     public String generateToken(User user) {
-        Date now = new Date();
-        Date expiryDate = new Date(now.getTime() + jwtExpirationMs);
+        Instant now = Instant.now();
+        Instant expiryDate = now.plusMillis(jwtExpirationMs);
 
         Map<String, Object> claims = new HashMap<>();
         claims.put("userId", user.getId());
@@ -43,8 +46,8 @@ public class JwtTokenProvider {
         return Jwts.builder()
                 .subject(user.getUsername())
                 .claims(claims)
-                .issuedAt(now)
-                .expiration(expiryDate)
+                .issuedAt(Date.from(now))
+                .expiration(Date.from(expiryDate))
                 .signWith(getSigningKey())
                 .compact();
     }

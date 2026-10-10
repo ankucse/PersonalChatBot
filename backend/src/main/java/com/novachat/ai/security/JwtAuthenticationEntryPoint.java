@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,7 +31,7 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
         body.put("error", "Unauthorized");
         body.put("message", "Full authentication is required to access this resource. Please log in.");
         body.put("path", request.getServletPath());
-        body.put("timestamp", LocalDateTime.now().toString());
+        body.put("timestamp", LocalDateTime.now(ZoneId.systemDefault()).toString());
 
         objectMapper.writeValue(response.getOutputStream(), body);
     }

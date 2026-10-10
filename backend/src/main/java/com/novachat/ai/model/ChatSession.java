@@ -3,6 +3,7 @@ package com.novachat.ai.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -51,7 +52,7 @@ public class ChatSession {
     public ChatSession(User user) {
         this.user = user;
         this.sessionUuid = "ses_" + UUID.randomUUID().toString().replace("-", "").substring(0, 16);
-        this.startedAt = LocalDateTime.now();
+        this.startedAt = LocalDateTime.now(ZoneId.systemDefault());
         this.status = "ACTIVE";
         this.totalQuestions = 0;
         this.title = "Chat Session " + startedAt.toLocalTime().toString().substring(0, 5);
