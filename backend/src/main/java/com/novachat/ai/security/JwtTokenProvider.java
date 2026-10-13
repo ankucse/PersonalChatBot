@@ -19,7 +19,7 @@ public class JwtTokenProvider {
 
     private static final Logger logger = LoggerFactory.getLogger(JwtTokenProvider.class);
 
-    @Value("${jwt.secret:NovachatUnicornSecretKey2026SuperSecureEnterpriseGradeToken384Bits}")
+    @Value("${jwt.secret:NovachatEnterpriseSecretKey2026SuperSecureEnterpriseGradeToken384Bits}")
     private String jwtSecret;
 
     @Value("${jwt.expiration-ms:86400000}") // 24 hours default

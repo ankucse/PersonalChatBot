@@ -46,7 +46,7 @@ gemini:
   model: ${GEMINI_MODEL:gemini-3.5-flash}
   temperature: 0.7
   max-output-tokens: 2048
-  system-prompt: "You are NovaChat AI, an enterprise-grade AI chatbot built for unicorn SaaS platforms. Provide clear, accurate, structured, and insightful answers with markdown formatting where appropriate."
+  system-prompt: "You are NovaChat AI, an enterprise-grade AI chatbot built for modern software platforms. Provide clear, accurate, structured, and insightful answers with markdown formatting where appropriate."
 
 logging:
   level:

@@ -17,10 +17,10 @@ import {
 } from 'lucide-react';
 
 const SUGGESTIONS = [
-  "🚀 Design a Unicorn SaaS architecture for 1M DAU with Spring Boot & MySQL",
+  "🚀 Design an enterprise backend architecture for 1M DAU with Spring Boot & MySQL",
   "💾 Explain MySQL Indexing & Query Optimization for 10M rows in MySQL Workbench",
   "🔒 How does Stateless JWT with Spring Security 6 protect our endpoints?",
-  "⚡ Compare High-Throughput & Low-Latency SaaS Architectures"
+  "⚡ Compare High-Throughput & Low-Latency Distributed Architectures"
 ];
 
 export default function ChatView({ user, currentSession, setCurrentSession }) {

@@ -79,7 +79,7 @@ public class AuthService {
         } else {
             User demoUser = new User(
                     "sarah",
-                    "sarah@unicorn.io",
+                    "sarah@novachat.ai",
                     passwordEncoder.encode(demoPassword),
                     "Sarah Connor",
                     Role.ROLE_USER
