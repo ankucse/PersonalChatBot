@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🦄 NovaChat AI
+# NovaChat AI
 ### **Enterprise Conversational Intelligence & Audit Platform**
 
 *Full-Stack Architecture with Java Spring Boot 3.3, Native MySQL Workbench 8.0, React 19, Tailwind CSS & Dynamic Multi-Domain AI*
@@ -12,12 +12,12 @@
 [![MySQL](https://img.shields.io/badge/MySQL-8.0_Workbench-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
 [![React](https://img.shields.io/badge/React-19.0-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![AI Engine](https://img.shields.io/badge/AI_Engine-Multi--Domain_Neural-7C3AED?style=for-the-badge&logo=openai&logoColor=white)](https://spring.io/)
+[![Spotless](https://img.shields.io/badge/Code_Quality-Spotless_7.0-4B32C3?style=for-the-badge&logo=gradle&logoColor=white)](https://github.com/diffplug/spotless)
 [![Gradle](https://img.shields.io/badge/Gradle-9.7-02303A?style=for-the-badge&logo=gradle&logoColor=white)](https://gradle.org/)
 
 <br/>
 
-**[⚡ Quick Launch](#-quick-launch-guide) • [✨ Key Capabilities](#-unicorn-saas-capabilities) • [🏗️ Architecture](#️-system-architecture) • [💾 MySQL Workbench](#-mysql-workbench-integration) • [🔐 Security & Roles](#-enterprise-security--personas)**
+**[⚡ Quick Launch](#-quick-launch-guide) • [✨ Key Capabilities](#-key-capabilities) • [🏗️ Architecture](#️-system-architecture) • [🧹 Code Quality & Spotless](#-code-quality--spotless-formatting) • [🧪 Testing](#-testing--quality-assurance) • [💾 MySQL Workbench](#-mysql-workbench-integration) • [🔐 Security & Personas](#-enterprise-security--personas)**
 
 </div>
 
@@ -27,13 +27,13 @@
 
 ```
 ┌────────────────────────────────────────────────────────────────────────────────────────┐
-│  🦄 NovaChat AI   [Unicorn SaaS]        [ ☀️ / 🌙 Theme ]  [ 👑 Sole Admin / 👤 Customer ] │
+│  NovaChat AI   [Enterprise Edition]     [ ☀️ / 🌙 Theme ]  [ 👑 Sole Admin / 👤 Customer ] │
 ├────────────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                        │
 │   ┌────────────────────────────────────────┐   ┌───────────────────────────────────┐   │
 │   │  👤 CUSTOMER WORKSPACE                 │   │  👑 SOLE ADMIN CONTROL CENTER     │   │
 │   │                                        │   │                                   │   │
-│   │  • Activated strictly post-login       │   │  • Real-Time SaaS KPI Dashboard   │   │
+│   │  • Activated strictly post-login       │   │  • Real-Time Platform Dashboard   │   │
 │   │  • Distraction-free ephemeral sessions │   │  • Complete User Session Auditor  │   │
 │   │  • Zero past chat leakage to users     │   │  • Chronological Question Logs    │   │
 │   │  • Instant multi-domain AI answers     │   │  • Latency & Token Analytics      │   │
@@ -46,15 +46,17 @@
 
 ---
 
-## ✨ Unicorn SaaS Capabilities
+## ✨ Key Capabilities
 
 * ☀️ **Instant Light / Dark Mode Toggle:** Seamless one-click daylight & obsidian dark modes with smooth micro-transitions and synchronized local persistence.
 * 🧠 **Zero API Key Requirement:** Works **100% out of the box with zero external API keys**. The built-in multi-domain engine answers questions across physics, thermodynamics, algorithms, database optimization, backend architecture, and general queries.
-* 🌐 **Optional Server-Side Cloud AI:** If live Google Gemini cloud connectivity is desired for arbitrary web knowledge, simply set `gemini.api-key` in `application.yml` on the backend. **Customers never see, enter, or manage API keys**.
+* 🌐 **Optional Server-Side Cloud AI:** If live Google Gemini cloud connectivity is desired for arbitrary web knowledge, simply set `GEMINI_API_KEY` as an environment variable or in `application.yml` on the backend. **Customers never see, enter, or manage API keys**.
 * 🔒 **Zero Customer Chat Leakage:** Standard users chat exclusively within their active session. Prior chat histories are kept ephemeral from users for confidentiality and a clean interface.
 * 👑 **Solitary Super Admin Governance:** The application strictly enforces only **one** Super Admin (`ROLE_ADMIN`). Standard user registrations are sandboxed exclusively to `ROLE_USER` with strict privilege escalation safeguards.
 * 🕵️ **Full Administrative Question Audit:** The sole Super Admin has access to the **Admin Control Center**, allowing complete inspection of every customer session and every single question and answer asked.
 * 💾 **Direct MySQL Workbench Persistence:** All registered users, active sessions, and conversational dialogue are persisted directly into your native MySQL Server (`novachat_db`) with `LONGTEXT` storage.
+* 🧹 **Automated Code Formatting (Spotless):** Full integration with Gradle Spotless for code cleanup, trailing whitespace removal, unused import stripping, and formatting before every build.
+* 🧪 **Isolated In-Memory Test Suite:** 100% automated test coverage running against an in-memory H2 database, requiring zero external MySQL dependencies during CI/CD or test execution.
 
 ---
 
@@ -158,31 +160,88 @@ erDiagram
 | **Chat History Retention in UI** | ❌ Ephemeral (Not Maintained) | ✅ Complete Relational History |
 | **Inspect Other Users' Sessions** | ❌ Strictly Prohibited (403) | ✅ Complete Audit Access |
 | **Inspect All Question Logs** | ❌ Blocked | ✅ Chronological Logs & Tokens |
-| **SaaS Metrics & Analytics** | ❌ Blocked | ✅ Real-Time KPI Cards |
+| **Platform Metrics & Analytics** | ❌ Blocked | ✅ Real-Time KPI Cards |
 
-### Credentials:
+### Account Configuration & Seeding:
 
-* **👑 Sole Super Admin:**
-  * **Username:** `admin`
-  * **Password:** `Admin@NovaChat2026!`
-  * **Role:** `ROLE_ADMIN` *(Only 1 exists; hidden from normal customers)*
-* **👤 Standard Customer Account:**
-  * **Username:** `sarah`
-  * **Password:** `User@NovaChat2026!`
-  * **Role:** `ROLE_USER`
+To maintain zero hardcoded credentials and prevent sensitive leaks, seed credentials are fully externalized and configurable via environment variables:
 
-*(New accounts created via "Sign Up" are automatically assigned standard `ROLE_USER` status and have zero admin privileges).*
+* **👑 Sole Super Admin (`ROLE_ADMIN`):**
+  * **Default Username:** `admin`
+  * **Configured via:** `ADMIN_SEED_PASSWORD` environment variable (or `app.seed.admin-password` in `application.yml`).
+  * *Only 1 Super Admin account can exist in the system.*
+
+* **👤 Standard Customer Accounts (`ROLE_USER`):**
+  * **Self-Registration:** New users can sign up directly via the **Create Account** tab on the login screen.
+  * **Demo Account Seed:** Configurable via `DEMO_SEED_PASSWORD` environment variable (or `app.seed.demo-password` in `application.yml`).
+  * *All newly registered accounts are strictly sandboxed to `ROLE_USER`.*
+
+---
+
+## 🧹 Code Quality & Spotless Formatting
+
+The project integrates [Spotless](https://github.com/diffplug/spotless) to enforce clean code conventions and formatting rules across all Java sources.
+
+### Formatting Capabilities:
+* **Unused Import Removal:** Automatically strips unused import statements.
+* **Whitespace Trimming:** Trims trailing whitespace on all lines.
+* **Indentation:** Enforces uniform 4-space indentation across all classes.
+* **Newline Enforcement:** Ensures files end with a standard newline character.
+
+### Commands:
+
+* **Format Entire Codebase:**
+  ```powershell
+  cd backend
+  .\gradlew.bat format
+  ```
+  *(Alias for `./gradlew spotlessApply`)*
+
+* **Check Formatting Without Applying:**
+  ```powershell
+  cd backend
+  .\gradlew.bat spotlessCheck
+  ```
+
+* **Automatic Execution:**
+  Spotless is hooked directly into Gradle compilation (`compileJava.dependsOn('spotlessApply')`), meaning **code is automatically formatted before every build**.
+
+---
+
+## 🧪 Testing & Quality Assurance
+
+The backend includes a comprehensive integration and unit test suite verified with JUnit 5, AssertJ, and Spring Boot Test.
+
+### Running Tests:
+```powershell
+cd backend
+.\gradlew.bat test
+```
+
+### Key Test Highlights:
+* **Isolated H2 Test Database:** All tests execute against an isolated in-memory H2 database (`src/test/resources/application.yml`), ensuring tests run with 100% reliability regardless of local MySQL server state.
+* **Security & RBAC Verification:** Verifies 403 Forbidden constraints on administrative routes for standard users.
+* **End-to-End Chat Flow:** Asserts customer login, session creation, question persistence, and prompt-leakage prevention.
+* **Admin Audit Suite:** Verifies Super Admin access to KPI metrics and session detail audit trails.
 
 ---
 
 ## 💾 MySQL Workbench Integration
 
-The backend connects directly to your native local MySQL installation without Docker or containers:
+The backend connects directly to your local MySQL installation (`localhost:3306`).
 
-* **Host / Port:** `localhost:3306`
-* **Database:** `novachat_db`
-* **Username:** `root`
-* **Password:** `@246810Alpha`
+### Configuration:
+
+Configure your database credentials in [`backend/src/main/resources/application.yml`](file:///C:/Users/ankit/.gemini/antigravity/scratch/novachat-ai/backend/src/main/resources/application.yml) or via environment variables:
+
+```yaml
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/novachat_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: your_mysql_username
+    password: your_mysql_password
+```
 
 ### Live Inspection Queries:
 
@@ -215,15 +274,12 @@ The application works immediately out-of-the-box without configuring any keys. T
 - **Identity & General:** "What is your name", greetings, math, and dynamic analytical synthesis.
 
 ### 2. Live Cloud Mode (Optional)
-If you wish to enable Google Gemini cloud generation for any arbitrary question in the world, simply add your key on the server in [`backend/src/main/resources/application.yml`](file:///C:/Users/ankit/.gemini/antigravity/scratch/novachat-ai/backend/src/main/resources/application.yml):
-```yaml
-gemini:
-  api-key: "YOUR_GEMINI_API_KEY_HERE"
-```
-Or export it via environment variable:
+If you wish to enable Google Gemini cloud generation for any arbitrary question in the world, supply your key via an environment variable or in `application.yml`:
+
 ```powershell
 $env:GEMINI_API_KEY="YOUR_GEMINI_API_KEY_HERE"
 ```
+
 *Note: The customer UI will NEVER ask the customer for keys—all AI routing is strictly handled server-side.*
 
 ---
@@ -255,11 +311,11 @@ npm run dev
 #### Step 3: Open in Browser
 Visit **`http://localhost:5173`**
 1. Switch between ☀️ **Light Mode** and 🌙 **Dark Mode** via the top toggle.
-2. Sign in as a Customer to chat in a clean, private session.
-3. Sign in as Super Admin (`admin` / `Admin@NovaChat2026!`) to audit customer questions and sessions!
+2. Sign in as a Customer to chat in a clean, private session, or create an account via **Sign Up**.
+3. Sign in as Super Admin to audit customer questions, inspect tokens, and view session trails!
 
 ---
 
 <div align="center">
-  <sub>Built for Unicorn SaaS Architecture • Spring Boot 3.3 • MySQL Workbench • React 19</sub>
+  <sub>Enterprise Full-Stack Architecture • Spring Boot 3.3 • MySQL Workbench • React 19 • Spotless Quality</sub>
 </div>

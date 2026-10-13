@@ -30,7 +30,7 @@ public class GeminiProperties {
     /**
      * System instructions given to Gemini
      */
-    private String systemPrompt = "You are NovaChat AI, an enterprise-grade AI chatbot built for unicorn SaaS platforms. Provide clear, accurate, structured, and insightful answers with markdown formatting where appropriate.";
+    private String systemPrompt = "You are NovaChat AI, an enterprise-grade AI chatbot built for modern software platforms. Provide clear, accurate, structured, and insightful answers with markdown formatting where appropriate.";
 
     public String getApiKey() {
         return apiKey;

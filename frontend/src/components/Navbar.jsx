@@ -20,7 +20,7 @@ export default function Navbar({ user, activeTab, setActiveTab, currentSession, 
                 NovaChat <span className="text-brand-600 dark:text-brand-400 font-extrabold">AI</span>
               </span>
               <span className="px-2 py-0.5 text-[10px] uppercase font-semibold tracking-wider rounded-full bg-brand-500/10 text-brand-600 dark:text-brand-300 border border-brand-500/20">
-                Unicorn SaaS
+                Enterprise Edition
               </span>
             </div>
             <div className="hidden sm:flex items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">

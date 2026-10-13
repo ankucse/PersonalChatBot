@@ -1,6 +1,6 @@
 @echo off
 echo ===================================================================
-echo   NovaChat AI - Unicorn Enterprise SaaS Launch Script
+echo   NovaChat AI - Enterprise Platform Launch Script
 echo ===================================================================
 echo.
 
@@ -10,7 +10,7 @@ echo [*] Launching Spring Boot Backend on http://localhost:8080 ...
 timeout /t 6 /nobreak >nul
 
 start "NovaChat Frontend (Vite React 5173)" cmd /k "cd /d %~dp0frontend && npm run dev"
-echo [*] Launching React SaaS Frontend on http://localhost:5173 ...
+echo [*] Launching React Web Frontend on http://localhost:5173 ...
 
 echo.
 echo Application ready!
